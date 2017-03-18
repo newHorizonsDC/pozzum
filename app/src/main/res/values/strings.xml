@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Pozzum_2.0 (closed pre-alpha)</string>
+    <string name="title_activity_register">RegisterActivity</string>
+    <string name="newUser">New user?</string>
+    <string name="bLogin">Log in</string>
+    <string name="txtRegister">New user</string>
+    <string name="bRegister">Register new user</string>
+    <string name="inputUsername">Username</string>
+    <string name="inputPassword">Password</string>
+    <string name="inputPassword2">Repeat password</string>
+    <string name="txtRegUser">Regester a new Pozzum user</string>
+    <string name="trademark">&#169; newHorizonsDC</string>
+    <string name="txtWelcome">Modern morse communicating</string>
+
+
+</resources>

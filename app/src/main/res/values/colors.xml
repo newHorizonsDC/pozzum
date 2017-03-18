@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#f7871d</color>
+    <color name="colorPrimaryLighter">#ffa64d</color>
+
+    <color name="colorBackground">#444444</color>
+    <color name="colorBlack">#111111</color>
+    <color name="colorAccent">#b3b3b3</color> <!-- What the fuk er denne? -->
+
+    <color name="colorTextWhite">#dddddd</color>
+</resources>

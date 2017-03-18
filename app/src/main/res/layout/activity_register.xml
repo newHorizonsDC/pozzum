@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.newhdc.pedergb.pozzum_20.RegisterActivity"
+    android:background="@color/colorBackground"
+    >
+
+
+    <EditText
+        android:id="@+id/editUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="83dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="@string/inputUsername"
+        android:textColorHint="@color/colorPrimaryLighter"
+        android:textColor="@color/colorTextWhite"
+        android:layout_below="@+id/textView"
+        android:layout_toLeftOf="@+id/textView2"
+        android:layout_toStartOf="@+id/textView2"
+        android:layout_marginRight="33dp"
+        android:layout_marginEnd="33dp" />
+
+    <EditText
+        android:id="@+id/editPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editUsername"
+        android:layout_alignStart="@+id/editUsername"
+        android:layout_below="@+id/editUsername"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:hint="@string/inputPassword"
+        android:textColorHint="@color/colorPrimaryLighter"
+        android:textColor="@color/colorTextWhite"
+
+        android:layout_alignRight="@+id/editUsername"
+        android:layout_alignEnd="@+id/editUsername" />
+    <EditText
+        android:id="@+id/editPassword2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editUsername"
+        android:layout_alignStart="@+id/editUsername"
+        android:layout_below="@+id/editPassword"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:hint="@string/inputPassword2"
+        android:textColorHint="@color/colorPrimaryLighter"
+        android:textColor="@color/colorTextWhite"
+
+        android:layout_alignRight="@+id/editPassword"
+        android:layout_alignEnd="@+id/editPassword" />
+
+    <Button
+        android:id="@+id/bRegiserUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="34dp"
+        android:text="@string/bRegister"
+        android:textColor="@color/colorPrimary"
+        android:background="@drawable/button_shape"
+        android:layout_below="@+id/editPassword2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="40dp"
+        android:fontFamily="sans-serif-condensed"
+        android:text="@string/txtRegUser"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimary"
+        android:textSize="28sp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:text="@string/trademark"
+        android:textSize="12sp" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        app:srcCompat="@drawable/possum"
+        android:layout_above="@+id/textView2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+</RelativeLayout>
