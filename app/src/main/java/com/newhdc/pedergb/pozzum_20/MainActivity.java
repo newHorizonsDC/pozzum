@@ -48,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
                         MainActivity.this.startActivity(loginIntent);
                     }
                 });
+                //Intent loginIntent = new Intent(MainActivity.this, HomeActivity.class);
+                //MainActivity.this.startActivity(loginIntent);
             }
         });
 
@@ -67,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         requestQueue = Volley.newRequestQueue(this); // 'this' is the Context
 
         //String url = "http://192.168.1.135:3000/addUser"; //Tidenes verste feil...
-        //String url = "http://10.22.44.150:3000/addUser";
+        //String url = "http://10.22.46.153:3000/login";
         String url = "http://192.168.1.135:3000/login";
             /* ----------------Post data----------------- */
         Map<String, String> jsonParams = new HashMap<>();
@@ -76,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
         jsonParams.put("password", inputPassword);
 
         JsonObjectRequest postRequest = new JsonObjectRequest( Request.Method.POST, url,
-
+            //TODO - FINNE UT HVORFOR VI BRUKER POST METODE SOM GETTER
                 new JSONObject(jsonParams),
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -86,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
                                 showToastMessage("Logging in", 1000);
                                 callback.onSuccess();
                             }
-                            else if (response.getString("status").equals("wrong"))showToastMessage("Wrong password", 1000);
+                            else if (response.getString("status").equals("wrong"))password.setError("Wrong password");
                             else username.setError("No user with that name");
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -96,7 +98,8 @@ public class MainActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        //TODO - LEGGE INN RESPONS VED ERROR
+                        showToastMessage("Can not connect to server", 1000);
+                        error.printStackTrace();
                     }
                 }) {
             @Override

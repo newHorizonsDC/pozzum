@@ -1,9 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBackground"
     tools:context="com.newhdc.pedergb.pozzum_20.HomeActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26dp"
+        android:text="Registered users:"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="169dp"
+        tools:layout_editor_absoluteY="227dp"
+        android:layout_below="@+id/linearLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"
+        android:textColor="@color/colorPrimary"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+
+        android:id="@+id/linearLayout">
+
+        <Button
+            android:id="@+id/navbar1"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:text="@string/navbar1"
+            android:textSize="12sp"
+            />
+
+        <Button
+            android:id="@+id/navbar2"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:text="@string/navbar2"
+            android:textSize="12sp"
+            />
+
+        <Button
+            android:id="@+id/navbar3"
+            android:layout_width="73dp"
+            android:layout_height="wrap_content"
+            android:text="@string/navbar3"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/navbar4"
+            android:layout_width="85dp"
+            android:layout_height="wrap_content"
+            android:text="@string/navbar4"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/navbar5"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:text="@string/navbar5"
+            android:textSize="12sp" />
+
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="250dp"
+        android:layout_height="400dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:orientation="vertical"
+            android:id="@+id/levelList">
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

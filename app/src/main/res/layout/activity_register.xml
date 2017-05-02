@@ -17,8 +17,8 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="@string/inputUsername"
-        android:textColorHint="@color/colorPrimaryLighter"
-        android:textColor="@color/colorTextWhite"
+        android:textColorHint="@color/colorTextWhite"
+        android:textColor="@color/colorPrimaryLighter"
         android:layout_below="@+id/textView"
         android:layout_toLeftOf="@+id/textView2"
         android:layout_toStartOf="@+id/textView2"
@@ -36,8 +36,8 @@
         android:ems="10"
         android:inputType="textPassword"
         android:hint="@string/inputPassword"
-        android:textColorHint="@color/colorPrimaryLighter"
-        android:textColor="@color/colorTextWhite"
+        android:textColorHint="@color/colorTextWhite"
+        android:textColor="@color/colorPrimaryLighter"
 
         android:layout_alignRight="@+id/editUsername"
         android:layout_alignEnd="@+id/editUsername" />
@@ -52,8 +52,8 @@
         android:ems="10"
         android:inputType="textPassword"
         android:hint="@string/inputPassword2"
-        android:textColorHint="@color/colorPrimaryLighter"
-        android:textColor="@color/colorTextWhite"
+        android:textColorHint="@color/colorTextWhite"
+        android:textColor="@color/colorPrimaryLighter"
 
         android:layout_alignRight="@+id/editPassword"
         android:layout_alignEnd="@+id/editPassword" />
@@ -85,9 +85,9 @@
         android:fontFamily="sans-serif-condensed"
         android:text="@string/txtRegUser"
         android:textAlignment="center"
-        android:textAllCaps="false"
+        android:textAllCaps="true"
         android:textColor="@color/colorPrimary"
-        android:textSize="28sp" />
+        android:textSize="24sp" />
 
     <TextView
         android:id="@+id/textView2"

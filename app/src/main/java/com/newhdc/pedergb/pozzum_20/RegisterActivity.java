@@ -50,13 +50,13 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     // --------------------------------------- POST ---------------------------------------- \\
-    public void postUser(final String inputUsername, String inputPassword){
+    public void postUser(String inputUsername, String inputPassword){//Endret: tok vek "final" foran inputUsername
 
         RequestQueue requestQueue;
         requestQueue = Volley.newRequestQueue(this); // 'this' is the Context
 
         //String url = "http://192.168.1.135:3000/addUser"; //Tidenes verste feil...
-        //String url = "http://10.22.44.150:3000/addUser";
+        //String url = "http://10.22.46.153:3000/addUser";
         String url = "http://192.168.1.135:3000/addUser";
 
             /* ----------------Post data----------------- */
