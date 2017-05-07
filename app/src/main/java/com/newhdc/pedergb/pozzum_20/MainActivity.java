@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -44,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
                 login(username.getText().toString(), password.getText().toString(), new VolleyCallback() {
                     @Override
                     public void onSuccess() {
+                        Globals.logedInUser = username.getText().toString();
+                        online(username.getText().toString(), "true");
                         Intent loginIntent = new Intent(MainActivity.this, HomeActivity.class);
                         MainActivity.this.startActivity(loginIntent);
                     }
@@ -68,9 +71,7 @@ public class MainActivity extends AppCompatActivity {
         RequestQueue requestQueue;
         requestQueue = Volley.newRequestQueue(this); // 'this' is the Context
 
-        //String url = "http://192.168.1.135:3000/addUser"; //Tidenes verste feil...
-        //String url = "http://10.22.46.153:3000/login";
-        String url = "http://192.168.1.135:3000/login";
+        String url = Globals.IP + "/login";
             /* ----------------Post data----------------- */
         Map<String, String> jsonParams = new HashMap<>();
 
@@ -85,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(JSONObject response) {
                         try {
                             if (response.getString("status").equals("ok")){
-                                showToastMessage("Logging in", 1000);
+                                showToastMessage("Logging in..", 1000);
                                 callback.onSuccess();
                             }
                             else if (response.getString("status").equals("wrong"))password.setError("Wrong password");
@@ -112,6 +113,53 @@ public class MainActivity extends AppCompatActivity {
         };
         requestQueue.add(postRequest);
     }
+
+
+    // ------------------------- Send user-logged-in message to server -------------------------- \\
+    public void online(String inputUsername, String isOnline){
+
+        RequestQueue requestQueue;
+        requestQueue = Volley.newRequestQueue(this); // 'this' is the Context
+
+        String url =Globals.IP + "/online";
+
+        Map<String, String> jsonParams = new HashMap<>();
+
+        jsonParams.put("username", inputUsername);
+        jsonParams.put("isOnline", isOnline);
+
+            /* ----------------Post data----------------- */
+        JsonObjectRequest postRequest = new JsonObjectRequest( Request.Method.POST, url,
+                new JSONObject(jsonParams),
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        //showToastMessage("ONLINE!", 1000);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        showToastMessage("ERROR GOING ONLINE", 1000);
+                    }
+                }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<>();
+                headers.put("Content-Type", "application/json; charset=utf-8");
+                headers.put("User-agent", System.getProperty("http.agent"));
+                return headers;
+            }
+        };
+        postRequest.setRetryPolicy(new DefaultRetryPolicy(
+                0,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
+        requestQueue.add(postRequest);
+    }
+
+
 
     public interface VolleyCallback{ //This is used to get result from onResponse thread
         void onSuccess();

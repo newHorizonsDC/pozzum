@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -26,7 +27,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class HomeActivity extends AppCompatActivity {
-    Button nav1, nav2, nav3, nav4, nav5;
+    Button nav1, nav2, nav3, nav4, nav5, logout;
     JSONArray usernames;
     LinearLayout levelsLayout;
     @Override
@@ -40,6 +41,8 @@ public class HomeActivity extends AppCompatActivity {
         nav3 = (Button) findViewById(R.id.navbar3);
         nav4 = (Button) findViewById(R.id.navbar4);
         nav5 = (Button) findViewById(R.id.navbar5);
+        logout = (Button) findViewById(R.id.logout);
+
 
         nav1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,6 +85,16 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                online(Globals.logedInUser, "false");
+                Globals.logedInUser = null;
+                Intent logoutIntent = new Intent(HomeActivity.this, MainActivity.class);
+                HomeActivity.this.startActivity(logoutIntent);
+            }
+        });
+
         login(new VolleyCallback() {
             @Override
             public void onSuccess() {
@@ -97,7 +110,7 @@ public class HomeActivity extends AppCompatActivity {
         RequestQueue requestQueue;
         requestQueue = Volley.newRequestQueue(this); // 'this' is the Context
 
-        String url = "http://192.168.1.135:3000/find";
+        String url =Globals.IP + "/find";
 
             /* ----------------Post data----------------- */
         JsonObjectRequest postRequest = new JsonObjectRequest( Request.Method.POST, url,
@@ -128,6 +141,51 @@ public class HomeActivity extends AppCompatActivity {
                 return headers;
             }
         };
+        requestQueue.add(postRequest);
+    }
+
+
+    // ------------------------- Send user-logged-in message to server -------------------------- \\
+    public void online(String inputUsername, String isOnline){
+
+        RequestQueue requestQueue;
+        requestQueue = Volley.newRequestQueue(this); // 'this' is the Context
+
+        String url =Globals.IP + "/online";
+
+        Map<String, String> jsonParams = new HashMap<>();
+
+        jsonParams.put("username", inputUsername);
+        jsonParams.put("isOnline", isOnline);
+
+            /* ----------------Post data----------------- */
+        JsonObjectRequest postRequest = new JsonObjectRequest( Request.Method.POST, url,
+                new JSONObject(jsonParams),
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        //showToastMessage("ONLINE!", 1000);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        showToastMessage("ERROR GOING ONLINE", 1000);
+                    }
+                }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<>();
+                headers.put("Content-Type", "application/json; charset=utf-8");
+                headers.put("User-agent", System.getProperty("http.agent"));
+                return headers;
+            }
+        };
+        postRequest.setRetryPolicy(new DefaultRetryPolicy(
+                0,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
         requestQueue.add(postRequest);
     }
 

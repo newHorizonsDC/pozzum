@@ -17,6 +17,8 @@
     <string name="navbar3">Home</string>
     <string name="navbar4">Settings</string>
     <string name="navbar5">My User</string>
+    <string name="logout">Log Out</string>
+
 
 
 </resources>

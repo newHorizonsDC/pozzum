@@ -1,5 +1,6 @@
 package com.newhdc.pedergb.pozzum_20;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -57,8 +58,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         //String url = "http://192.168.1.135:3000/addUser"; //Tidenes verste feil...
         //String url = "http://10.22.46.153:3000/addUser";
-        String url = "http://192.168.1.135:3000/addUser";
-
+        String url = Globals.IP + "/addUser";
             /* ----------------Post data----------------- */
         Map<String, String> jsonParams = new HashMap<>();
 
@@ -72,7 +72,11 @@ public class RegisterActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            if (response.getString("status").equals("ok"))showToastMessage("User added to database", 10000);
+                            if (response.getString("status").equals("ok")){
+                                showToastMessage("User added to database", 1000);
+                                Intent mainmenuIntent = new Intent(RegisterActivity.this, MainActivity.class);
+                                RegisterActivity.this.startActivity(mainmenuIntent);
+                            }
                             else username.setError("Username is taken");
                         } catch (JSONException e) {
                             e.printStackTrace();
