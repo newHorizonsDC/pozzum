@@ -29,6 +29,7 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity {
     EditText username, password;
     TextView txtRegister;
+    TextView txtWebview;
     Button bLogin;
 
     @Override
@@ -62,6 +63,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent registerIntent = new Intent(MainActivity.this, RegisterActivity.class);
                 MainActivity.this.startActivity(registerIntent);
+            }
+        });
+
+        txtWebview = (TextView) findViewById(R.id.txtWebview);
+        txtWebview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent webviewIntent = new Intent(MainActivity.this, WebviewActivity.class);
+                MainActivity.this.startActivity(webviewIntent);
             }
         });
     }

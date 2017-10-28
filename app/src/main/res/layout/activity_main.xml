@@ -87,6 +87,19 @@ android:background="@color/colorBackground"
         android:textSize="14sp"
         android:textStyle="bold" />
 
+    <TextView
+        android:id="@+id/txtWebview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtRegister"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:text="Go to webview"
+        android:textAllCaps="false"
+        android:textColor="@color/colorTextWhite"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
 <TextView
     android:id="@+id/textView2"
     android:layout_width="wrap_content"
