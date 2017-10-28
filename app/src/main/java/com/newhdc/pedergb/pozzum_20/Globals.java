@@ -10,7 +10,7 @@ public class Globals {
     public static final String airportIP = "http://10.190.13.205:3000";
     public static final String localhost = "http://localhost:3000";
 
-    public static final String IP = osloIP;
+    public static final String IP = "http://10.0.0.5:3000";
 
 
 
