@@ -13,6 +13,9 @@ public class WebviewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_webview);
 
+        CookieManager cookieManager = CookieManager.getInstance();
+        String cookies = cookieManager.getCookie(Globals.IP).split(;)[0];
+
         WebView webview = (WebView) findViewById(R.id.webview);
         WebSettings webSettings = webview.getSettings();
         webSettings.setJavaScriptEnabled(true);

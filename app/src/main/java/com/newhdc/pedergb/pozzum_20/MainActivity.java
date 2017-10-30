@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onSuccess() {
                         Globals.logedInUser = username.getText().toString();
                         online(username.getText().toString(), "true");
-                        Intent loginIntent = new Intent(MainActivity.this, HomeActivity.class);
+                        Intent loginIntent = new Intent(MainActivity.this, WebviewActivity.class);
                         MainActivity.this.startActivity(loginIntent);
                     }
                 });
