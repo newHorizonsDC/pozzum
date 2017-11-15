@@ -5,8 +5,12 @@ import android.os.Bundle;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebChromeClient;
-
+//import java.net.CookieManager;
+import android.webkit.CookieManager;
+import android.util.Log;
 public class WebviewActivity extends AppCompatActivity {
+
+    public static final String TAG = "kakebaker";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -14,7 +18,8 @@ public class WebviewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_webview);
 
         CookieManager cookieManager = CookieManager.getInstance();
-        String cookies = cookieManager.getCookie(Globals.IP).split(;)[0];
+        String cookies = cookieManager.getCookie(Globals.IP).split(";")[0];
+        Log.e(TAG, cookies);
 
         WebView webview = (WebView) findViewById(R.id.webview);
         WebSettings webSettings = webview.getSettings();

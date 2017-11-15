@@ -85,15 +85,15 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                online(Globals.logedInUser, "false");
-                Globals.logedInUser = null;
-                Intent logoutIntent = new Intent(HomeActivity.this, MainActivity.class);
-                HomeActivity.this.startActivity(logoutIntent);
-            }
-        });
+        //logout.setOnClickListener(new View.OnClickListener() {
+        //    @Override
+        //    public void onClick(View v) {
+        //        online(Globals.logedInUser, "false");
+        //        Globals.logedInUser = null;
+        //        Intent logoutIntent = new Intent(HomeActivity.this, MainActivity.class);
+        //        HomeActivity.this.startActivity(logoutIntent);
+        //    }
+        //});
 
         login(new VolleyCallback() {
             @Override
@@ -146,48 +146,48 @@ public class HomeActivity extends AppCompatActivity {
 
 
     // ------------------------- Send user-logged-in message to server -------------------------- \\
-    public void online(String inputUsername, String isOnline){
+    //public void online(String inputUsername, String isOnline){
 
-        RequestQueue requestQueue;
-        requestQueue = Volley.newRequestQueue(this); // 'this' is the Context
+    //    RequestQueue requestQueue;
+    //    requestQueue = Volley.newRequestQueue(this); // 'this' is the Context
 
-        String url =Globals.IP + "/online";
+    //    String url =Globals.IP + "/online";
 
-        Map<String, String> jsonParams = new HashMap<>();
+    //    Map<String, String> jsonParams = new HashMap<>();
 
-        jsonParams.put("username", inputUsername);
-        jsonParams.put("isOnline", isOnline);
+    //    jsonParams.put("username", inputUsername);
+    //    jsonParams.put("isOnline", isOnline);
 
-            /* ----------------Post data----------------- */
-        JsonObjectRequest postRequest = new JsonObjectRequest( Request.Method.POST, url,
-                new JSONObject(jsonParams),
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        //showToastMessage("ONLINE!", 1000);
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        showToastMessage("ERROR GOING ONLINE", 1000);
-                    }
-                }) {
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                HashMap<String, String> headers = new HashMap<>();
-                headers.put("Content-Type", "application/json; charset=utf-8");
-                headers.put("User-agent", System.getProperty("http.agent"));
-                return headers;
-            }
-        };
-        postRequest.setRetryPolicy(new DefaultRetryPolicy(
-                0,
-                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+    //        /* ----------------Post data----------------- */
+    //    JsonObjectRequest postRequest = new JsonObjectRequest( Request.Method.POST, url,
+    //            new JSONObject(jsonParams),
+    //            new Response.Listener<JSONObject>() {
+    //                @Override
+    //                public void onResponse(JSONObject response) {
+    //                    //showToastMessage("ONLINE!", 1000);
+    //                }
+    //            },
+    //            new Response.ErrorListener() {
+    //                @Override
+    //                public void onErrorResponse(VolleyError error) {
+    //                    showToastMessage("ERROR GOING ONLINE", 1000);
+    //                }
+    //            }) {
+    //        @Override
+    //        public Map<String, String> getHeaders() throws AuthFailureError {
+    //            HashMap<String, String> headers = new HashMap<>();
+    //            headers.put("Content-Type", "application/json; charset=utf-8");
+    //            headers.put("User-agent", System.getProperty("http.agent"));
+    //            return headers;
+    //        }
+    //    };
+    //    postRequest.setRetryPolicy(new DefaultRetryPolicy(
+    //            0,
+    //            DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+    //            DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 
-        requestQueue.add(postRequest);
-    }
+    //    requestQueue.add(postRequest);
+    //}
 
     public interface VolleyCallback{ //This is used to get result from onResponse thread
         void onSuccess();
